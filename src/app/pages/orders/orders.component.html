@@ -1,68 +1,288 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body"></div>
-    </div>
+  <div class="container-fluid">
+    <div class="header-body"> </div>
   </div>
+</div>
 <!-- src/app/orders/orders.component.html -->
-<div class="tabs">
-    <button (click)="switchStatus('New')">New</button>
-    <button (click)="switchStatus('Pending')">Pending</button>
-    <button (click)="switchStatus('Completed')">Completed</button>
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+        <div class="row text-center mt-3">
+          <div class="col-lg-12 tabs text-center">
+            <button [ngClass]="{ 'active': currentStatus === 'New' }" (click)="switchStatus('New')">New</button>
+            <button [ngClass]="{ 'active': currentStatus === 'Pending' }"
+              (click)="switchStatus('Pending')">Pending</button>
+            <button [ngClass]="{ 'active': currentStatus === 'Completed' }"
+              (click)="switchStatus('Completed')">Completed</button>
+          </div>
+        </div>
+      </div>
+        <div class="tables">
+          <div *ngIf="currentStatus === 'New'" class="table new">
+            <div class="row text-center">
+              <div class="col-lg-12">
+                <h2>New Orders</h2>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Product 1</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default"><i class="fas fa-edit"
+                          aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Product 2</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Product 3</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Product 4</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Product 5</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div *ngIf="currentStatus === 'Pending'" class="table pending">
+            <div class="row text-center">
+              <div class="col-lg-12">
+                <h2>Pending Orders</h2>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Product 1</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default"><i class="fas fa-edit"
+                          aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Product 2</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Product 3</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Product 4</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Product 5</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div *ngIf="currentStatus === 'Completed'" class="table completed">
+            <div class="row text-center">
+              <div class="col-lg-12">
+                <h2>Completed Orders</h2>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Product 1</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default"><i class="fas fa-edit"
+                          aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Product 2</td>
+                    <td>Product</td>
+                    <td>
+                      <a [routerLink]="['/addproducts']" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Product 3</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Product 4</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Product 5</td>
+                    <td>Product</td>
+                    <td>
+                      <a href="#!" class="btn btn-sm btn-default">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <button class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div class="tables">
-    <div *ngIf="currentStatus === 'New'" class="table new">
-      <h2>New Orders</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of filteredOrders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.status }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <div *ngIf="currentStatus === 'Pending'" class="table pending">
-      <h2>Pending Orders</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of filteredOrders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.status }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <div *ngIf="currentStatus === 'Completed'" class="table completed">
-      <h2>Completed Orders</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of filteredOrders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.status }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
+</div>
