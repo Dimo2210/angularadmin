@@ -1,11 +1,6 @@
 // src/app/orders/orders.component.ts
-import { Component, OnInit } from '@angular/core';
 
-interface Order {
-  id: number;
-  status: 'New' | 'Pending' | 'Completed';
-  // add other relevant fields
-}
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-orders',
@@ -13,27 +8,24 @@ interface Order {
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  orders: Order[] = [
+  currentStatus: string = 'New'; // Default status
+  searchQuery: string = ''; // Search query
+  orders = [
+    // Example orders array, replace with your actual data
     { id: 1, status: 'New' },
     { id: 2, status: 'Pending' },
     { id: 3, status: 'Completed' },
     { id: 4, status: 'New' },
-    { id: 5, status: 'Pending' },
-    { id: 6, status: 'Completed' }
+    { id: 5, status: 'Pending' }
   ];
-  filteredOrders: Order[] = [];
-  currentStatus: 'New' | 'Pending' | 'Completed' = 'New';
+  filteredOrders = [];
 
-  ngOnInit(): void {
-    this.loadOrders();
+  ngOnInit() {    
   }
 
-  loadOrders(): void {
-    this.filteredOrders = this.orders.filter(order => order.status === this.currentStatus);
-  }
-
-  switchStatus(status: 'New' | 'Pending' | 'Completed'): void {
+  switchStatus(status: string) {
     this.currentStatus = status;
-    this.loadOrders();
+
   }
+
 }
