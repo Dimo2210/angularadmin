@@ -41,7 +41,16 @@ export class HttpService {
      return this.http.post<any>(`${environment.apiUrl}Products`, productData);
   }
 
+  UserLogins(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}UserLogins`);
+  }
+  deleteUserLogins(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}UserLogins/${id}`);
+  }
   
+  getbyiduserlogin(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}UserLogins/${id}`);
+  }
   
   // login(email: string, password: string) {
   //   return this.http.post<any>(`${environment.apiUrl}UserLogin`, { email, password });

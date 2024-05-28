@@ -16,6 +16,7 @@ import {AddproductsComponent} from '../../pages/addproducts/addproducts.componen
 import {OffersComponent} from '../../pages/offers/offers.component';
 import {OrdersComponent} from '../../pages/orders/orders.component';
 import {AddoffersComponent} from '../../pages/addoffers/addoffers.component';
+import {EditstaffComponent} from '../../pages/editstaff/editstaff.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -33,5 +34,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'addproducts',           component: AddproductsComponent },
     { path: 'offers',           component: OffersComponent },
     { path: 'addoffers',           component: AddoffersComponent },
-    { path: 'orders',           component: OrdersComponent }
+    { path: 'orders',           component: OrdersComponent },
+    { path: 'editstaff',           component: EditstaffComponent }
 ];

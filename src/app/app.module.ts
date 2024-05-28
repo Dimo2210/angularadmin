@@ -25,6 +25,7 @@ import { AddoffersComponent } from './pages/addoffers/addoffers.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { OffersComponent } from './pages/offers/offers.component';
+import { EditstaffComponent } from './pages/editstaff/editstaff.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { OffersComponent } from './pages/offers/offers.component';
     AddoffersComponent,
     OrdersComponent,
     ProductsComponent,
-    OffersComponent
+    OffersComponent,
+    EditstaffComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

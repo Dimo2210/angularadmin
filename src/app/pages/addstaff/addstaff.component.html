@@ -1,150 +1,110 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body">  </div>
-    </div>
+  <div class="container-fluid">
+    <div class="header-body">  </div>
   </div>
-  <div class="container-fluid mt--7">
-    <div class="row">
-      <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="row justify-content-center">
-            
-          </div>
-          
-      </div>
-
-
-      
-      <div class="col-xl-12 order-xl-2">
-        <div class="card bg-secondary shadow">
-          <div class="card-header bg-white border-0">
-            <div class="row align-items-center">
-              <div class="col-8">
-                <h3 class="mb-0">ADD STAFF </h3>
+</div>
+<div class="container-fluid mt--7">
+  
+  <div class="row">
+    <div class="col"> 
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">ADD STAFFS </h3>
+        </div>  
+        <div class="card-body">
+          <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="Name">Staff Name</label>
+                  <input type="text" formControlName="Name" class="form-control" id="Name" placeholder="Enter name">
+                  <div *ngIf="staffForm.get('Name').invalid && staffForm.get('Name').touched" class="text-danger">
+                    Name is required.
+                  </div>
+                </div>
               </div>
-              <div class="col-4 text-right">
-                <a href="#!" class="btn btn-sm btn-primary">submit</a>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" formControlName="username" class="form-control" id="username" placeholder="Enter username">
+                  <div *ngIf="staffForm.get('username').invalid && staffForm.get('username').touched" class="text-danger">
+                    Username is required.
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card-body">
-            <form>
-              <h6 class="heading-small text-muted mb-4">staff information</h6>
-              <div class="pl-lg-4">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-username">Username</label>
-                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-email">Email address</label>
-                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-first-name">First name</label>
-                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-last-name">Last name</label>
-                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="my-4" />
-              
-              <!-- Description -->
-              <!-- <h6 class="heading-small text-muted mb-4">Role</h6> -->
-              <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Role</label>
-                  <input type="text" id="input-role" class="form-control form-control-alternative" placeholder="Enter Role" value="Admin">
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-
-
-
-<!-- <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body"></div>
-    </div>
-  </div>
-  <div class="container-fluid mt--7">
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <h3 class="mb-0">ADD STAFF</h3>
-          </div>  
-          <div class="card-body">
-            <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
-              <div class="form-group">
-                <label for="staffName">Full Name</label>
-                <input type="text" formControlName="staffName" class="form-control" id="staffName" placeholder="Enter staff name">
-                <div *ngIf="staffForm.get('staffName').invalid && staffForm.get('staffName').touched" class="text-danger">
-                  Full Name is required.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control" id="username" placeholder="Enter username">
-                <div *ngIf="staffForm.get('username').invalid && staffForm.get('username').touched" class="text-danger">
-                  Username is required.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="Password">Password</label>
-                <input type="Password" formControlName="Password" class="form-control" id="Password" placeholder="Enter Password">
-                <div *ngIf="staffForm.get('Password').invalid && staffForm.get('Password').touched" class="text-danger">
+                  <label for="password">Password</label>
+                  <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter password">
+                  <div *ngIf="staffForm.get('password').invalid && staffForm.get('password').touched" class="text-danger">
                     Password is required.
+                  </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="contactNumber">Mobile No</label>
-                <input type="text" formControlName="contactNumber" class="form-control" id="contactNumber" placeholder="Enter mobile number">
-                <div *ngIf="staffForm.get('contactNumber').invalid && staffForm.get('contactNumber').touched" class="text-danger">
-                  Valid Mobile Number is required.
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="emailId">Email</label>
+                  <input type="text" formControlName="emailId" class="form-control" id="emailId" placeholder="Enter email">
+                  <div *ngIf="staffForm.get('emailId').invalid && staffForm.get('emailId').touched" class="text-danger">
+                    Email is required.
+                  </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter email">
-                <div *ngIf="staffForm.get('email').invalid && staffForm.get('email').touched" class="text-danger">
-                  Valid Email is required.
+            </div>
+            
+            <!-- <div class="form-group">
+              <label for="role">Role</label>
+              <input type="text" formControlName="role" class="form-control" id="role" placeholder="Enter role">
+              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                Role is required.
+              </div>
+            </div> -->
+
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="role">Role</label>
+              <select formControlName="role" class="form-control" id="role">
+                <option value="">Select a role</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+              </select>
+              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                Role is required.
+              </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="address">Role</label>
-                <input type="text" formControlName="Role" class="form-control" id="Role" placeholder="Enter Role">
-                <div *ngIf="staffForm.get('Role').invalid && staffForm.get('Role').touched" class="text-danger">
-                    Role is required.
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button  style="margin-top: 27px;" type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button>
                 </div>
               </div>
-              
-              
-              
-             
-              <button type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button>
-            </form>
-          </div>
+            </div>
+
+
+
+
+
+            <!-- <div class="form-group">
+              <label for="role">Role</label>
+              <select formControlName="role" class="form-control" id="role">
+                <option value="">Select a role</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+              </select>
+              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                Role is required.
+              </div>
+            </div>
+            
+            <button type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button> -->
+          </form>
         </div>
       </div>
     </div>
   </div>
-   -->
+</div>
