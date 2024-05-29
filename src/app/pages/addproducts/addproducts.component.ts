@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-addproducts',
@@ -12,14 +15,17 @@ export class AddproductsComponent implements OnInit {
   imageFiles: File[] = [null, null, null, null];
   productForm: UntypedFormGroup;
   categories: any[];
-  
+  offers: any[];
+  ProductFileNames: any;
 
-  constructor(private fb: UntypedFormBuilder,private httpService: HttpService, private formBuilder: UntypedFormBuilder) { 
-    this.productForm = this.formBuilder.group({
-      productName: ['', Validators.required],
-      category: ['', Validators.required],  
-    });
-  }
+
+  constructor( private httpService: HttpService,
+    private router: Router,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private formBuilder: UntypedFormBuilder) { }
+
+    
   ngOnInit(): void {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
@@ -32,8 +38,40 @@ export class AddproductsComponent implements OnInit {
       description: ['', Validators.required],
       productImages: this.fb.array([null, null, null, null])
     });
+    this.bindProductsDetails();
     this.fetchCategories();
+    this.fetchOffers();
   }
+  async bindProductsDetails() {
+    const ProductId = this.route.snapshot.paramMap.get('id');
+    if (ProductId) {
+        try {
+            const response = await this.httpService.getProductbyid(+ProductId).toPromise();     
+            if (response) {
+                const ProductData = response;
+                console.log(ProductData);
+                this.productForm.patchValue({
+                    id: ProductData.id,
+                    ProductName: ProductData.name || '', // Handle undefined case
+                    description: ProductData.description,
+                    actualprice: ProductData.description,
+                    offerprice: ProductData.description,
+                    ddoffer: ProductData.description,
+                    offerdate: ProductData.description,
+                    approxdelivery: ProductData.description,
+                    stock: ProductData.stockquantity  
+//                    productImages:ProductData.image,
+                    // Don't set the 'image' field here
+                });
+                this.ProductFileNames = ProductData.image,
+                console.log(ProductData);
+                console.log('Image Value:', ProductData.image);                                
+            }
+        } catch (error) {
+            console.error('Error fetching Product by ID:', error);
+        }
+    }
+}
 
   onFileSelected(event: Event, index: number): void {
     const input = event.target as HTMLInputElement;
@@ -58,8 +96,15 @@ export class AddproductsComponent implements OnInit {
       }
     );
   }
-  test(){    
-    console.log('Selected value:', this.productForm.value.ddcategory);
+  fetchOffers() {
+    this.httpService.getOffers().subscribe(
+      (response: any[]) => {
+        this.offers = response;
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
   }
   onSubmit(): void {
     if (this.productForm.valid) {

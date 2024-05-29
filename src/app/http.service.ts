@@ -10,14 +10,14 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-
-  getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}Categories`);
-  }
   login(loginData: { userlogin: string, Password: string }): Observable<any> {
     return this.http.post(`${environment.apiUrl}UserLogins/login`, loginData);
   }
 
+  getCategories(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Categories`);
+  }
+ 
   deleteCategory(id: number): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}Categories/${id}`);
   }
@@ -36,10 +36,63 @@ export class HttpService {
   InsertCategory(categoryData: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}Categories`, categoryData);
   }
-   saveProduct(productData: any): Observable<any> {
-    // return this.http.post<any>(`${environment.apiUrl}Products`, productData, { headers: this.headers });
+  
+  //#region  Products API Start here - >
+  getProducts(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Products`);
+  }
+ 
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}Products/${id}`);
+  }
+
+  getProductbyid(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}Products/${id}`);
+  }
+  updateProduct(ProductId: number, ProductData: any): Observable<any> {
+    // Send the updated category data in the request body
+    return this.http.put<any>(`${environment.apiUrl}Products/${ProductId}`, ProductData);
+  }
+   saveProduct(productData: any): Observable<any> {    
      return this.http.post<any>(`${environment.apiUrl}Products`, productData);
   }
+  //#endregion Products API End here - >
+
+  //#region  Offers API Start here - >
+  getOffers(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Offers`);
+  }
+ 
+  deleteOffer(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}Offers/${id}`);
+  }
+
+  getOfferbyid(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}Offers/${id}`);
+  }
+  updateOffers(OfferId: number, OfferData: any): Observable<any> {
+    // Send the updated category data in the request body
+    return this.http.put<any>(`${environment.apiUrl}Offers/${OfferId}`, OfferData);
+  }
+  //#endregion Offers API End here - >
+
+  //#region  Orders API Start here - >
+  getOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Orders`);
+  }
+  getNewOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Orders`);
+  }
+  getPendingOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Orders`);
+  }
+  getCompletedOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Orders`);
+  }
+  UpdateOrders(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}Orders`);
+  }
+  //#endregion Offers API End here - >
 
   UserLogins(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}UserLogins`);
