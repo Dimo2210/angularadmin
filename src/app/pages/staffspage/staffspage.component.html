@@ -120,7 +120,7 @@
               <td>{{ user.fullName }}</td>
               <td>{{ user.emailId }}</td>
               <td>
-                  <span class="text-success mr-2">Admin</span>
+                <span class="text-success mr-2">{{ getRoleName(user.roleId) }}</span>
               <td>
                 <ion-button (click)="goto_userlogi_by_group(user.id)" value={{user.id}}
                   class="btn btn-sm btn-default">

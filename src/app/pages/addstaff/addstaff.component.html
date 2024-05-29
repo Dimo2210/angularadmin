@@ -67,15 +67,14 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="role">Role</label>
-              <select formControlName="role" class="form-control" id="role">
-                <option value="">Select a role</option>
-                <option value="admin">Admin</option>
-                <option value="staff">Staff</option>
-              </select>
-              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
-                Role is required.
-              </div>
+                  <label for="role">role</label>
+                  <select formControlName="role" (change)="test()" class="form-control" id="role">
+                    <option value="" disabled selected>Select Category</option>
+                    <option *ngFor="let role of userRoles" [value]="role.id">{{ role.name }}</option>
+                 </select>
+                  <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                    Role is required.
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">

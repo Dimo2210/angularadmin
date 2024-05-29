@@ -51,7 +51,18 @@ export class HttpService {
   getbyiduserlogin(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}UserLogins/${id}`);
   }
-  
+  getuserlogin(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}UserRoles`);
+  }
+  insertuser(UserData: any): Observable<any> {
+    // return this.http.post<any>(`${environment.apiUrl}Products`, productData, { headers: this.headers });
+     return this.http.post<any>(`${environment.apiUrl}UserLogins`, UserData);
+  }
+
+  updatestaff(userId: number, userData: any): Observable<any> {
+    // Send the updated category data in the request body
+    return this.http.put<any>(`${environment.apiUrl}UserLogins/${userId}`, userData);
+  }
   // login(email: string, password: string) {
   //   return this.http.post<any>(`${environment.apiUrl}UserLogin`, { email, password });
   // }

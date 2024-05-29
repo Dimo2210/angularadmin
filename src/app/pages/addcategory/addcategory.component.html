@@ -27,9 +27,14 @@
                   Description is required.
                 </div>
               </div>
-              <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="image">
+              <div class="form-group col-lg-12 col-md-12">
+                <label for="productImages">Category Images</label>
+                <div class="image-upload-container">
+                  <div class="image-box" *ngFor="let image of images; let i = index">
+                    <input type="file" (change)="onFileSelected($event, i)" accept="image/*" />
+                    <img *ngIf="image" [src]="image" alt="Image preview" />
+                  </div>
+                </div>             
               </div>
               <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-success mb-4">Submit</button>
             </form>

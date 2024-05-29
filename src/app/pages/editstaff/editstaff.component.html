@@ -40,6 +40,16 @@
                   Email ID is required.
                 </div>
               </div> -->
+              <div class="form-group">
+                <label for="role">role</label>
+                <select formControlName="role" (change)="test()" class="form-control" id="role">
+                  <option value="" disabled selected>Select role</option>
+                  <option *ngFor="let role of userRoles" [value]="role.id">{{ role.name }}</option>
+               </select>
+                <div *ngIf="userForm.get('role').invalid && userForm.get('role').touched" class="text-danger">
+                  Role is required.
+                </div>
+              </div>
               <button type="submit" [disabled]="userForm.invalid" class="btn btn-success mb-4">Update</button>
             </form>
           </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-editcategory',
   templateUrl: './editcategory.component.html',
@@ -127,8 +127,9 @@ export class EditcategoryComponent implements OnInit {
         // Update the category using the HTTP service
         await this.httpService.updateCategory(categoryId, categoryData).toPromise();
         console.log('Category updated successfully');
+        this.showSuccess();
         // Navigate back to the category list or show a success message
-        this.router.navigate(['/categories']);
+        // this.router.navigate(['/categories']);
       } catch (error) {
         console.error('Error updating category:', error);
       }
@@ -142,4 +143,19 @@ export class EditcategoryComponent implements OnInit {
         this.categoryForm.get('image').setValue(file.name);
     }
 }
+showSuccess() 
+  {
+
+    Swal.fire({
+      title: 'Update Category ',
+      text: 'Record Updated Successfully...',
+      icon: 'success',
+      confirmButtonColor: '#DD6B55',
+      }).then((result) => {
+      if (result.isConfirmed) 
+      {
+        this.router.navigate(['/category']);   
+      }
+    }); 
+  } 
 }
