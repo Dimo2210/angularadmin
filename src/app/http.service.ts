@@ -113,6 +113,9 @@ export class HttpService {
     // Send the updated category data in the request body
     return this.http.put<any>(`${environment.apiUrl}UserLogins/${userId}`, userData);
   }
+  getcustomer(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}Customers`);
+  }
   // login(email: string, password: string) {
   //   return this.http.post<any>(`${environment.apiUrl}UserLogin`, { email, password });
   // }
