@@ -25,9 +25,6 @@ export class HttpService {
   getbyidcategory(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}Categories/${id}`);
   }
-  // updateCategory(categoryId: number, categoryData: any): Observable<any> {
-  //   return this.http.put<any>(`${environment.apiUrl}Categories/${categoryId}`, categoryData);
-  // }
   updateCategory(categoryId: number, categoryData: any): Observable<any> {
     // Send the updated category data in the request body
     return this.http.put<any>(`${environment.apiUrl}Categories/${categoryId}`, categoryData);
@@ -60,19 +57,19 @@ export class HttpService {
 
   //#region  Offers API Start here - >
   getOffers(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}Offers`);
+    return this.http.get<any[]>(`${environment.apiUrl}OffersCoupons`);
   }
  
   deleteOffer(id: number): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}Offers/${id}`);
+    return this.http.delete<any>(`${environment.apiUrl}OffersCoupons/${id}`);
   }
 
   getOfferbyid(id: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}Offers/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}OffersCoupons/${id}`);
   }
   updateOffers(OfferId: number, OfferData: any): Observable<any> {
     // Send the updated category data in the request body
-    return this.http.put<any>(`${environment.apiUrl}Offers/${OfferId}`, OfferData);
+    return this.http.put<any>(`${environment.apiUrl}OffersCoupons/${OfferId}`, OfferData);
   }
   //#endregion Offers API End here - >
 
@@ -92,7 +89,7 @@ export class HttpService {
   UpdateOrders(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}Orders`);
   }
-  //#endregion Offers API End here - >
+  //#endregion Orders API End here - >
 
   UserLogins(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}UserLogins`);

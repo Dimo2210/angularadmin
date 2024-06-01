@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import { firstValueFrom } from 'rxjs';
-import {ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -10,8 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class ProductsComponent implements OnInit {
   products: any;
-  constructor(private HttpService: HttpService,private router: Router,private route: ActivatedRoute) { }
 
+  constructor(
+    private HttpService: HttpService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
   ngOnInit() {
     
     this.fetchProducts();
@@ -44,7 +48,6 @@ export class ProductsComponent implements OnInit {
   
     if (isConfirmed) {
       try {
-        // Your delete logic here
         await this.HttpService.deleteProduct(id).toPromise();
         console.log(`Product with ID ${id} deleted successfully.`);
         this.fetchProducts();
@@ -53,19 +56,18 @@ export class ProductsComponent implements OnInit {
       }
     }
   }
-async showConfirmation(): Promise<boolean> {
-  const result = await Swal.fire({
-    title: 'Are you sure?',
-    text: 'You will not be able to recover this record!',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  });
 
-  return result.isConfirmed;
-}
+  async showConfirmation(): Promise<boolean> {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this record!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    });
 
-
+    return result.isConfirmed;
+  }
 }
